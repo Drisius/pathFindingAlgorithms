@@ -8,6 +8,7 @@
 
 #include "main.h"
 #include "tile.h"
+#include "algorithms.h"
 
 #pragma comment(linker, "/SUBSYSTEM:windows /ENTRY:mainCRTStartup")		
 
@@ -24,9 +25,16 @@ int main()
 	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
 	SDL_RenderClear(renderer);
 
-	std::vector<std::vector<Tile>> map = initializeVector(X_DIMENSION, Y_DIMENSION, true);
+	std::vector<std::vector<Tile>> map = initializeVector(X_DIMENSION, Y_DIMENSION, false);
 	initializeCoordinates(map);
-	
+	linkMapArray(map);
+
+	setStart(map);
+	setEnd(map);
+
+	// WALL CODE HERE
+
+	breadthFirstStraightSearch(map);
 
 	drawMapArray(renderer, map);
 

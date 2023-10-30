@@ -29,16 +29,18 @@ struct Tile
 	bool visited = false;
 	Tile* parent = nullptr;
 
-	int r = 0;
-	int g = 0;
+	int r = 230;
+	int g = 210;
 	int b = 0;
 	int a = 255;
 
 	Tile(bool randomizeColors);
 	void drawTile(SDL_Renderer* renderer);
+	void setColor();
 };
 
 int randRangeInclusive(int min, int max);
 std::vector<std::vector<Tile>> initializeVector(int X, int Y, bool randomizeColors);
 void initializeCoordinates(std::vector<std::vector<Tile>>& arrayMap);
 void drawMapArray(SDL_Renderer* renderer, std::vector<std::vector<Tile>>& arrayMap);
+void linkMapArray(std::vector<std::vector<Tile>>& arrayMap);
