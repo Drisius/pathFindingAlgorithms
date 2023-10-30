@@ -7,6 +7,7 @@
 #include <vector>
 
 #include "main.h"
+#include "tile.h"
 
 #pragma comment(linker, "/SUBSYSTEM:windows /ENTRY:mainCRTStartup")		
 
@@ -23,9 +24,11 @@ int main()
 	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
 	SDL_RenderClear(renderer);
 
+	std::vector<std::vector<Tile>> map = initializeVector(X_DIMENSION, Y_DIMENSION, true);
+	initializeCoordinates(map);
+	
 
-
-
+	drawMapArray(renderer, map);
 
 	SDL_RenderPresent(renderer);
 
